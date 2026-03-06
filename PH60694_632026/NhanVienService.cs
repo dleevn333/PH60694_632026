@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +20,11 @@ namespace PH60694_632026
         }
         public bool SuaNhanVien(NhanVien nhanVienMoi)
         {
-            if(nhanVienMoi == null || string.IsNullOrEmpty(nhanVienMoi.maNV)) return false;
+            if(nhanVienMoi == null) return false;
+            if (string.IsNullOrEmpty(nhanVienMoi.maNV) 
+                    || string.IsNullOrEmpty(nhanVienMoi.Ten)
+                    || string.IsNullOrEmpty(nhanVienMoi.phongBan))
+                    return false;
             var nhanVienSua = listNhanVien.FirstOrDefault(nv => nv.maNV == nhanVienMoi.maNV);
             if(nhanVienSua == null) return false;
             if(nhanVienMoi.luong < 0 || nhanVienMoi.soNamLamViec < 0) return false;
